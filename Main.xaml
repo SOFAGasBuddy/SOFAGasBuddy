@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SOFAGasBuddy.Main">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="5">
+            <Button
+                x:Name="btnRefresh"
+                Text="Refresh Data" 
+                FontSize="18"
+                SemanticProperties.Hint="Refreshed the data from the ESSO servers"
+                Clicked="OnRefreshClicked"
+                HorizontalOptions="End"/>
+            <Label
+                x:Name="lblData"
+                Text="Account Balance:"
+                FontSize="18"
+                HorizontalOptions="Start"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Account Balance" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
