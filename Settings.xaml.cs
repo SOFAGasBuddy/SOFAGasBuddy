@@ -3,6 +3,7 @@ using CommunityToolkit.Maui.Alerts;
 using System.Xml;
 using SOFAGasBuddy.Services;
 using System.Text.RegularExpressions;
+
 namespace SOFAGasBuddy;
 
 
@@ -39,14 +40,12 @@ public partial class Settings : ContentPage
             }
         }
         catch {
-            log.write("No creds");
-            txtSSN.Text = "error";
-            txtVRN.Text = "error";
+            log.write("Error retrieving credentials");
         }
 
     }
 
-    private async void btnSave_Clicked(object sender, EventArgs e)
+    private async void BtnSave_Clicked(object sender, EventArgs e)
     {
         Entry txtVRN = (Entry)FindByName("txtVRN");
         Entry txtSSN = (Entry)FindByName("txtSSN");
@@ -55,7 +54,7 @@ public partial class Settings : ContentPage
         {
             if (txtVRN.Text == "" || txtSSN.Text == "")
             {
-                var toast = Toast.Make("Creds are blank dipshit", duration, 14);
+                var toast = Toast.Make("SSN or VRN blank", duration, 14);
                 await toast.Show(cancellationTokenSource.Token);
                 return;
             }
@@ -65,16 +64,22 @@ public partial class Settings : ContentPage
                 await toast.Show(cancellationTokenSource.Token);
                 return;
             }
+            if (!Regex.Match(txtVRN.Text, "[A-Z]{1,3}\\s[A-Z]{2}\\d{2,4}").Success)
+            {
+                var toast = Toast.Make("VRN Formatted Incorrectly", duration, 14);
+                await toast.Show(cancellationTokenSource.Token);
+                return;
+            }
             await SecureStorage.Default.SetAsync("SSN", txtSSN.Text);
             await SecureStorage.Default.SetAsync("VRN", txtVRN.Text);
             
         }
         catch {
-            throw new Exception("Fuck, creds were blank");
+            throw new Exception("Something went wrong with the creds");
         }
     }
 
-    private void btnClear_Clicked(object sender, EventArgs e)
+    private void BtnClear_Clicked(object sender, EventArgs e)
     {
 
 
@@ -88,7 +93,7 @@ public partial class Settings : ContentPage
         {
             txtSSN.Text = "";
             txtVRN.Text = "";
-            var toast = Toast.Make("All cleared", duration, 14);
+            var toast = Toast.Make("All data cleared", duration, 14);
             toast.Show(cancellationTokenSource.Token);  
 
         }

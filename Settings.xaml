@@ -13,7 +13,8 @@
             HorizontalOptions="Start"
             ToolTipProperties.Text="SSN"
             IsPassword="True"
-            MaxLength="11" />
+            MaxLength="11"
+            MinimumWidthRequest="100"/>
         <Label
             Text="Vehicle Registration Number"
             x:Name="lblVRN"
@@ -21,12 +22,16 @@
         <Entry
             x:Name="txtVRN"
             HorizontalOptions="Start"
-            ToolTipProperties.Text="S XX1234"/>
+            ToolTipProperties.Text="S XX1234"
+            MinimumWidthRequest="100"
+            MaxLength="14"/>
         <Button Text="Save"
                 HorizontalOptions="Center"
-                Clicked="btnSave_Clicked"/>
+                Clicked="BtnSave_Clicked"
+                Margin="10"/>
         <Button Text="Clear Data"
                 HorizontalOptions="Center"
-                Clicked="btnClear_Clicked" />
+                Clicked="BtnClear_Clicked"
+                Margin="10"/>
     </VerticalStackLayout>
 </ContentPage>
