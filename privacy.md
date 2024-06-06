@@ -1,6 +1,9 @@
 
-SOFAGasBuddy Privacy Policy
-6 June 2024
+# SOFAGasBuddy Privacy Policy
+
+## 6 June 2024
+
+
 
 # What do we mean by "personal information?"
 
