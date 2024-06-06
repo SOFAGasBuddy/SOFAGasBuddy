@@ -13,7 +13,7 @@ If we store your personal information with information that is non-personal, we 
 
 # How do we learn information about you?
 
-You give it to us directly. Is it necessary for the app to function.
+Technically "we" never get access to your PII. It is stored on your device and it is necessary for the app to function.
 
 # What do we do with your information once we have it? How do we store and protect your personal information?
 
