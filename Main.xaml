@@ -5,15 +5,18 @@
 
     <ScrollView>
         <VerticalStackLayout
-            Padding="30,0"
-            Spacing="5">
+            Padding="20,0"
+            Spacing="0">
             <Button
                 x:Name="btnRefresh"
                 Text="Refresh Data" 
                 FontSize="18"
                 SemanticProperties.Hint="Refreshed the data from the ESSO servers"
                 Clicked="OnRefreshClicked"
-                HorizontalOptions="End"/>
+                HorizontalOptions="End"
+                Margin="10,10,10,30"
+                MinimumHeightRequest="50"
+                MinimumWidthRequest="150"/>
             <Label
                 x:Name="lblData"
                 Text="Account Balance:"
@@ -22,6 +25,14 @@
                 Style="{StaticResource SubHeadline}"
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Account Balance" />
+            <Label
+                x:Name="lblRefresh"
+                Text="Last Refresh:"
+                FontSize="18"
+                HorizontalOptions="Start"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Last Refresh" />
         </VerticalStackLayout>
     </ScrollView>
 

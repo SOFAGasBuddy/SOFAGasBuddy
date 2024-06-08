@@ -16,7 +16,12 @@
     Title="Settings"
     ContentTemplate="{DataTemplate local:Settings}"
     Route="Settings" />
-    
+
+    <ShellContent
+   Title="Help"
+   ContentTemplate="{DataTemplate local:Help}"
+   Route="Help" />
+
     <ShellContent
     Title="About"
     ContentTemplate="{DataTemplate local:About}"

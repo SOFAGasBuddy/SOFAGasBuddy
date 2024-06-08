@@ -52,27 +52,31 @@ public partial class Settings : ContentPage
 
         try
         {
+            var toast = Toast.Make("", duration, 14);
             if (txtVRN.Text == "" || txtSSN.Text == "")
             {
-                var toast = Toast.Make("SSN or VRN blank", duration, 14);
+                toast = Toast.Make("SSN or VRN blank", duration, 14);
                 await toast.Show(cancellationTokenSource.Token);
                 return;
             }
             if (!Regex.Match(txtSSN.Text.Replace("-", ""), "\\d{9}").Success)
                 {
-                var toast = Toast.Make("Invalid Social Security Number", duration, 14);
+                toast = Toast.Make("Invalid Social Security Number", duration, 14);
                 await toast.Show(cancellationTokenSource.Token);
                 return;
             }
             if (!Regex.Match(txtVRN.Text, "[A-Z]{1,3}\\s[A-Z]{2}\\d{2,4}").Success)
             {
-                var toast = Toast.Make("VRN Formatted Incorrectly", duration, 14);
+                toast = Toast.Make("VRN Formatted Incorrectly", duration, 14);
                 await toast.Show(cancellationTokenSource.Token);
                 return;
             }
             await SecureStorage.Default.SetAsync("SSN", txtSSN.Text);
             await SecureStorage.Default.SetAsync("VRN", txtVRN.Text);
             
+            toast = Toast.Make("Saved", duration, 14);
+            await toast.Show(cancellationTokenSource.Token);
+
         }
         catch {
             throw new Exception("Something went wrong with the creds");

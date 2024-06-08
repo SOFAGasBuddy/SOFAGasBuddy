@@ -23,7 +23,7 @@ namespace SOFAGasBuddy.Services
         //private readonly string VEHICLE_STATUS = "_ctl0_ContentPlaceHolder1_ucESSOPanel_dgridVehicleList__ctl2_lblVRNStat";
         private readonly string URL = "https://odin.aafes.com/esso/";
 
-        public async Task<(string balance, List<SOFAGasBuddy.Services.Car>)> RefreshData(string ssn, string vrn)
+        public async Task<(string balance, List<SOFAGasBuddy.Services.Car>, bool success)> RefreshData(string ssn, string vrn)
         {
 
             HttpClient client = new();
@@ -60,10 +60,15 @@ namespace SOFAGasBuddy.Services
                 List<Car> cars = new();
 
                 bool first = true;
-
+                bool success = false;
                 if (response.IsSuccessStatusCode)
                 {
                     responseContent = await response.Content.ReadAsStringAsync();
+                    success = true; 
+                }
+                else
+                {
+                    return ("Error", cars, success);
                 }
 
                 HtmlDocument returned_data = new HtmlDocument();
@@ -91,7 +96,7 @@ namespace SOFAGasBuddy.Services
                     cars.Add(tmpcar);
 
                 }
-                return (balance, cars);
+                return (balance, cars, success);
             }
             catch (Exception ex)
             {
