@@ -21,6 +21,6 @@ It is stored on the device in an encrypted file. The only time that information 
 
 # When do we share your information with others?
 
-Never. Not now or ever. If anyone ever claims to be associated with SOFAGasBuddy and is requesting your PII, it is a scam. We will never share your information (as we do not have access to it) and we will never ask you for it.
+Never. Not now or ever. Well, technically AAFES, but that's the whole point of the app. If anyone ever claims to be associated with SOFAGasBuddy and is requesting your PII, it is a scam. We will never share your information (as we do not have access to it) and we will never ask you for it.
 
 For further information, please contact [SOFAGasBuddy@gmail.com](mailto:SOFAGasBuddy@gmail.com)
