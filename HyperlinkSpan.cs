@@ -21,7 +21,7 @@ namespace SOFAGasBuddy
         public HyperlinkSpan()
         {
             TextDecorations = TextDecorations.Underline;
-            TextColor = Colors.Blue;
+            TextColor = Colors.LightBlue;
             GestureRecognizers.Add(new TapGestureRecognizer
             {
                 // Launcher.OpenAsync is provided by Essentials.
