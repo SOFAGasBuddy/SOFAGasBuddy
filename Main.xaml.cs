@@ -5,12 +5,15 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using System.Threading.Tasks.Dataflow;
 using System.Linq.Expressions;
+using Microsoft.Extensions.Logging;
+
 
 
 namespace SOFAGasBuddy
 {
     public partial class Main : ContentPage
     {
+
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         ToastDuration duration = ToastDuration.Short;
         LogMe log = new();
@@ -18,9 +21,11 @@ namespace SOFAGasBuddy
         public Main()
         {
             InitializeComponent();
+
             Title = "Main Page";
             LoadOldData();
             RefreshData();
+
 
             var timer = Application.Current.Dispatcher.CreateTimer();
             timer.Interval = TimeSpan.FromMinutes(30);
