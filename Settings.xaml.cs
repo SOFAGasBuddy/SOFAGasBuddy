@@ -78,8 +78,8 @@ public partial class Settings : ContentPage
             await toast.Show(cancellationTokenSource.Token);
 
         }
-        catch {
-            throw new Exception("Something went wrong with the creds");
+        catch (Exception ex) {
+            log.write(ex.ToString());
         }
     }
 
