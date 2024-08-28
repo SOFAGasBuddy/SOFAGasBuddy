@@ -50,6 +50,7 @@
 	  <ApplicationTitle>SOFA Gas Buddy</ApplicationTitle>
 	  <ApplicationVersion>5</ApplicationVersion>
 	  <MtouchUseLlvm>False</MtouchUseLlvm>
+	  <BuildIpa>False</BuildIpa>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
@@ -64,6 +65,7 @@
 	  <ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
 	  <ApplicationTitle>SOFA Gas Buddy</ApplicationTitle>
 	  <ApplicationVersion>5</ApplicationVersion>
+	  <BuildIpa>False</BuildIpa>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android34.0|AnyCPU'">
@@ -79,8 +81,8 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(TargetFramework)'=='net8.0-ios'">
-	  <ProvisioningType>automatic</ProvisioningType>
-	  <CodesignKey>Apple Development: Created via API (FD7AWMJC59)</CodesignKey>
+	  <ProvisioningType>manual</ProvisioningType>
+	  <CodesignKey>iPhone Developer</CodesignKey>
 	  <CodesignProvision>VS: com.cyberaustin.sofagasbuddy Development</CodesignProvision>
 	</PropertyGroup>
 
