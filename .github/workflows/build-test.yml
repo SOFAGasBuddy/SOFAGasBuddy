@@ -42,9 +42,7 @@ jobs:
         echo "PATH=$PATH:$HOME/android-sdk/platform-tools:$HOME/android-sdk/cmdline-tools/bin:$HOME/android-sdk/build-tools/33.0.0" >> $GITHUB_ENV
 
     - name: Restore dependencies
-      run: |
-        dotnet restore
-        dotnet workload restore
+      run: dotnet workload restore
 
     - name: Build the project
       run: dotnet build --configuration Release -f:net8.0-android
@@ -75,9 +73,7 @@ jobs:
       run: sudo xcode-select -s /Applications/Xcode_15.0.app  # Use the appropriate Xcode version for your project
 
     - name: Restore dependencies
-      run: |
-        dotnet restore
-        dotnet workload restore
+      run: dotnet workload restore
 
     - name: Build the project
       run: dotnet build --configuration Release -f:net8.0-ios
