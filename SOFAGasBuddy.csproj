@@ -82,8 +82,8 @@
 
 	<PropertyGroup Condition="'$(TargetFramework)'=='net8.0-ios'">
 	  <ProvisioningType>manual</ProvisioningType>
-	  <CodesignKey>iPhone Developer</CodesignKey>
-	  <CodesignProvision>VS: com.cyberaustin.sofagasbuddy Development</CodesignProvision>
+	  <CodesignKey>Apple Distribution: Austin Schibler (4U3S9C797U)</CodesignKey>
+	  <CodesignProvision>AppStoreDistribute</CodesignProvision>
 	</PropertyGroup>
 
 	<ItemGroup>
