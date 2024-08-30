@@ -20,7 +20,7 @@ jobs:
     - name: Set up .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 8.0  # Adjust to your required .NET version
+        dotnet-version: 8.0_17.5  # Use .NET 8.0_17.5
 
     - name: Set up JDK
       uses: actions/setup-java@v3
@@ -41,7 +41,7 @@ jobs:
         echo "ANDROID_HOME=$HOME/android-sdk" >> $GITHUB_ENV
         echo "PATH=$PATH:$HOME/android-sdk/platform-tools:$HOME/android-sdk/cmdline-tools/bin:$HOME/android-sdk/build-tools/33.0.0" >> $GITHUB_ENV
 
-    - name: Restore dependencies
+    - name: Restore .NET workloads
       run: dotnet workload restore
 
     - name: Build the project
@@ -67,19 +67,19 @@ jobs:
     - name: Set up .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 8.0  # Adjust to your required .NET version
+        dotnet-version: 8.0_17.5  # Use .NET 8.0_17.5
 
     - name: Set up Xcode
-      run: sudo xcode-select -s /Applications/Xcode_15.0.app  # Use the appropriate Xcode version for your project
+      run: sudo xcode-select -s /Applications/Xcode_15.0.app  # Use Xcode 15.0
 
-    - name: Restore dependencies
+    - name: Restore .NET workloads
       run: dotnet workload restore
 
     - name: Build the project
-      run: dotnet build --configuration Release -f:net8.0-ios
+      run: dotnet build --configuration Release -f:net8.0_17.5-ios
 
     - name: Publish iOS IPA
-      run: dotnet publish -f:net8.0-ios -c Release -o output/
+      run: dotnet publish -f:net8.0_17.5-ios -c Release -o output/
 
     - name: Upload IPA as artifact
       uses: actions/upload-artifact@v3
