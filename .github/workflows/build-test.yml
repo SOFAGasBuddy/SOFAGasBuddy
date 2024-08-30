@@ -42,7 +42,7 @@ jobs:
         echo "PATH=$PATH:$HOME/android-sdk/platform-tools:$HOME/android-sdk/cmdline-tools/bin:$HOME/android-sdk/build-tools/33.0.0" >> $GITHUB_ENV
 
     - name: Install required workloads
-      run: dotnet workload install maui-android
+      run: dotnet workload install maui-android maui-ios microsoft-net-runtime-ios microsoft-ios-sdk-full
 
     - name: Restore .NET workloads
       run: dotnet workload restore
@@ -76,7 +76,8 @@ jobs:
       run: sudo xcode-select -s /Applications/Xcode_15.0.app  # Use Xcode 15.0
 
     - name: Install required workloads
-      run: dotnet workload install maui-ios
+      run: |
+        dotnet workload install maui-ios microsoft-net-runtime-ios microsoft-ios-sdk-full
 
     - name: Restore .NET workloads
       run: dotnet workload restore
