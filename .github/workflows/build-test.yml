@@ -42,7 +42,7 @@ jobs:
         echo "PATH=$PATH:$HOME/android-sdk/platform-tools:$HOME/android-sdk/cmdline-tools/bin:$HOME/android-sdk/build-tools/33.0.0" >> $GITHUB_ENV
 
     - name: Install required workloads
-      run: dotnet workload install maui-android maui-ios microsoft-net-runtime-ios microsoft-ios-sdk-full
+      run: dotnet workload install maui-android
 
     - name: Restore .NET workloads
       run: dotnet workload restore
