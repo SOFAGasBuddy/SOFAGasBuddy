@@ -26,8 +26,8 @@
 		<ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-		<ApplicationVersion>1</ApplicationVersion>
+		<ApplicationDisplayVersion>1.1</ApplicationDisplayVersion>
+		<ApplicationVersion>6</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
@@ -39,45 +39,45 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
 	  <NoWarn>1701;1702;CS0103;ENC0046</NoWarn>
-	  <ApplicationDisplayVersion>5.0.0</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.1.0</ApplicationDisplayVersion>
 	  <ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
 	  <NoWarn>1701;1702;CS0103;ENC0046</NoWarn>
-	  <ApplicationDisplayVersion>5.0.0</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.1.0</ApplicationDisplayVersion>
 	  <ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
 	  <ApplicationTitle>SOFA Gas Buddy</ApplicationTitle>
-	  <ApplicationVersion>5</ApplicationVersion>
+	  <ApplicationVersion>6</ApplicationVersion>
 	  <MtouchUseLlvm>False</MtouchUseLlvm>
 	  <BuildIpa>False</BuildIpa>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
 	  <NoWarn>1701;1702;CS0103;ENC0046</NoWarn>
-	  <ApplicationDisplayVersion>5.0.0</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.1.0</ApplicationDisplayVersion>
 	  <ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
 	  <NoWarn>1701;1702;CS0103;ENC0046</NoWarn>
-	  <ApplicationDisplayVersion>5.0.0</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.1.0</ApplicationDisplayVersion>
 	  <ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
 	  <ApplicationTitle>SOFA Gas Buddy</ApplicationTitle>
-	  <ApplicationVersion>5</ApplicationVersion>
+	  <ApplicationVersion>6</ApplicationVersion>
 	  <BuildIpa>False</BuildIpa>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android34.0|AnyCPU'">
 	  <ApplicationTitle>SOFA Gas Buddy</ApplicationTitle>
-	  <ApplicationVersion>5</ApplicationVersion>
-	  <ApplicationDisplayVersion>5.0</ApplicationDisplayVersion>
+	  <ApplicationVersion>6</ApplicationVersion>
+	  <ApplicationDisplayVersion>1.1</ApplicationDisplayVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android34.0|AnyCPU'">
 	  <ApplicationTitle>SOFA Gas Buddy</ApplicationTitle>
-	  <ApplicationVersion>5</ApplicationVersion>
-	  <ApplicationDisplayVersion>5.0</ApplicationDisplayVersion>
+	  <ApplicationVersion>6</ApplicationVersion>
+	  <ApplicationDisplayVersion>1.1</ApplicationDisplayVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(TargetFramework)'=='net8.0-ios'">

@@ -6,31 +6,41 @@
              x:Class="SOFAGasBuddy.Help"
              Title="Help">
     <ScrollView>
-    <VerticalStackLayout>
-        <Label 
-            Text="Settings"
-            Padding="10"
-            FontSize="Large"/>
-            <Label Text="SSN"
-                   Padding="10,0,0,0"
-                   FontSize="Medium"/>
+        <VerticalStackLayout>
+            <Label 
+                Text="Settings"
+                Padding="10"
+                FontSize="Large"/>
+            <Label Text="ID Type"
+                Padding="10,0,0,0"
+                FontSize="Medium"/>
             <Label
-       Padding="10,0,10,0"
-       FontSize="Small">
+                Padding="30,0,10,10"
+                FontSize="Small"
+                Text = "Select the ID that is associated with your account"/>            
+            <Label 
+                Text="ID"
+                Padding="10,0,0,0"
+                FontSize="Medium"/>
+            <Label
+                Padding="30,0,10,10"
+                FontSize="Small">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span>It has to be the full social security number, it's what AAFES' uses to track/manage your account. Dashes or not, it doesn't matter. "You want my SSN? Seems kind of sus..." Please see our</Span>
+                        <Span>If using your social security number, it has to be the full SSN (not last 4), it's what AAFES' uses to track/manage your account. Dashes or not, it doesn't matter. "You want my SSN? Seems kind of sus..." Please see our</Span>
                         <local:HyperlinkSpan Text=" Privacy Policy" Url="https://github.com/SOFAGasBuddy/SOFAGasBuddy/blob/main/privacy.md"/>
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
 
-            <Label Text="VRN"
-            Padding="10,10,0,0"
-            FontSize="Medium"/>
+            <Label 
+                Text="VRN"
+                Padding="10,0,0,0"
+                FontSize="Medium"/>
+            
             <Label Text="This is the Vehicle Registraion Number (Plate Number) of any car on the account. And it must be exactly as it is written on the registration form, i.e. all caps and a space between the Landkreis and vehicle number. &#10;&#10;Example: S XX1234&#10;&#10;The S in the above exmaple is for Stuttgart. If your vehicle was registered in Wiesbaden, then it would be WI instead."
-Padding="10,0,10,0"
-FontSize="Small"/>
+                Padding="30,0,10,0"
+                FontSize="Small"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

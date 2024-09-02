@@ -14,5 +14,17 @@ namespace SOFAGasBuddy.Services
         public string ration;
         public string ration_remaining;
         public string exp_date;
+
+        public Car()
+        {
+            vrn = string.Empty;
+            type = string.Empty;
+            status = string.Empty;
+            ration = string.Empty;
+            ration_remaining = string.Empty;
+            exp_date = string.Empty;
+
+        }
     }
+
 }

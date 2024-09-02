@@ -3,18 +3,20 @@ using CommunityToolkit.Maui.Alerts;
 using System.Xml;
 using SOFAGasBuddy.Services;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+
 
 namespace SOFAGasBuddy;
 
 
 public partial class Settings : ContentPage
 {
-    private string ssn;
+    private string id;
     private string vrn;
+    private string id_type;
+
     CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
     ToastDuration duration = ToastDuration.Short;
-
-    LogMe log = new();
 
     public Settings()
 	{
@@ -25,22 +27,47 @@ public partial class Settings : ContentPage
     private async void Get_Creds()
     {
         Entry txtVRN = (Entry)FindByName("txtVRN");
-        Entry txtSSN = (Entry)FindByName("txtSSN");
+        Entry txtSSN = (Entry)FindByName("txtID");
+        Picker pkrID_TYPE = (Picker)FindByName("pkrID_Type");
 
         try
         {
-            ssn = await SecureStorage.Default.GetAsync("SSN");
+            id = await SecureStorage.Default.GetAsync("ID");
             vrn = await SecureStorage.Default.GetAsync("VRN");
+            id_type = await SecureStorage.Default.GetAsync("ID_TYPE");
 
-            if (ssn != null && vrn != null)
+            if (id != null && vrn != null && id_type != null)
             {
-                txtSSN.Text = ssn;
+                txtSSN.Text = id;
                 txtVRN.Text = vrn;
-                log.write("Success reading creds from storage");
+
+                switch (id_type)
+                {
+                    case "S":
+                        pkrID_TYPE.SelectedIndex = 0;
+                        break;
+
+                    case "P":
+                        pkrID_TYPE.SelectedIndex = 1;
+                        break;
+
+                    case "D":
+                        pkrID_TYPE.SelectedIndex = 2;
+                        break;
+
+                    case "U":
+                        pkrID_TYPE.SelectedIndex = 3;
+                        break;
+
+                    case "I":
+                        pkrID_TYPE.SelectedIndex = 4;
+                        break;
+                }
+                
             }
         }
         catch {
-            log.write("Error retrieving credentials");
+            throw new Exception("Error retrieving credentials");
         }
 
     }
@@ -48,38 +75,96 @@ public partial class Settings : ContentPage
     private async void BtnSave_Clicked(object sender, EventArgs e)
     {
         Entry txtVRN = (Entry)FindByName("txtVRN");
-        Entry txtSSN = (Entry)FindByName("txtSSN");
+        Entry txtID = (Entry)FindByName("txtID");
+        Picker pkrID_TYPE = (Picker)FindByName("pkrID_Type");
+
+        Label lblErrors = (Label)FindByName("lblErrors");
+
+        lblErrors.Text = "";
+        
+        int id_type_index = pkrID_TYPE.SelectedIndex;
+
+        string id_type = "";
 
         try
         {
             var toast = Toast.Make("", duration, 14);
-            if (txtVRN.Text == "" || txtSSN.Text == "")
+            
+            if (txtID.Text == "")
             {
-                toast = Toast.Make("SSN or VRN blank", duration, 14);
+                toast = Toast.Make("ID is blank", duration, 14);
                 await toast.Show(cancellationTokenSource.Token);
                 return;
             }
-            if (!Regex.Match(txtSSN.Text.Replace("-", ""), "\\d{9}").Success)
+
+            if (txtVRN.Text == "")
+            {
+                toast = Toast.Make("VRN is blank", duration, 14);
+                await toast.Show(cancellationTokenSource.Token);
+                return;
+            }
+
+            if (pkrID_TYPE.SelectedIndex == -1)
+            {
+                toast = Toast.Make("Please select an ID type", duration, 14);
+                await toast.Show(cancellationTokenSource.Token);
+                return;
+            }
+            
+            //Only validates SSNs for the moment
+            if (id_type_index == 0)
+            {
+                if (!Regex.Match(txtID.Text.Replace("-", ""), "\\d{9}").Success)
                 {
-                toast = Toast.Make("Invalid Social Security Number", duration, 14);
-                await toast.Show(cancellationTokenSource.Token);
-                return;
+                    toast = Toast.Make("Invalid Social Security Number", duration, 14);
+                    await toast.Show(cancellationTokenSource.Token);
+                    return;
+                }
             }
+
             if (!Regex.Match(txtVRN.Text, "[A-Z]{1,3}\\s[A-Z]{2}\\d{2,4}").Success)
             {
                 toast = Toast.Make("VRN Formatted Incorrectly", duration, 14);
                 await toast.Show(cancellationTokenSource.Token);
                 return;
             }
-            await SecureStorage.Default.SetAsync("SSN", txtSSN.Text);
+
+            switch(pkrID_TYPE.SelectedIndex)
+            {
+                case 0:
+                    id_type = "S";
+                    break;
+                 
+                case 1:
+                    id_type = "P";
+                    break;
+
+                case 2:
+                    id_type = "D";
+                    break;
+
+                case 3:
+                    id_type = "U";
+                    break;
+
+                case 4:
+                    id_type = "I";
+                    break;
+
+        }
+
+            await SecureStorage.Default.SetAsync("ID", txtID.Text);
             await SecureStorage.Default.SetAsync("VRN", txtVRN.Text);
+            await SecureStorage.Default.SetAsync("ID_TYPE", id_type);
             
             toast = Toast.Make("Saved", duration, 14);
             await toast.Show(cancellationTokenSource.Token);
 
         }
         catch (Exception ex) {
-            log.write(ex.ToString());
+           
+            lblErrors.Text = ex.ToString();
+           
         }
     }
 
@@ -88,13 +173,16 @@ public partial class Settings : ContentPage
 
 
         Entry txtVRN = (Entry)FindByName("txtVRN");
-        Entry txtSSN = (Entry)FindByName("txtSSN");
+        Entry txtSSN = (Entry)FindByName("txtID");
+        Entry pkrID_TYPE = (Entry)FindByName("pkrID_TYPE");
 
-        bool ssn_success = SecureStorage.Default.Remove("SSN");
+        bool id_type_success = SecureStorage.Default.Remove("ID_TYPE");
+        bool id_success = SecureStorage.Default.Remove("ID");
         bool vrn_success = SecureStorage.Default.Remove("VRN");
 
-        if (ssn_success && vrn_success)
+        if (id_success && vrn_success && id_type_success)
         {
+            pkrID_Type.SelectedIndex = -1;
             txtSSN.Text = "";
             txtVRN.Text = "";
             var toast = Toast.Make("All data cleared", duration, 14);

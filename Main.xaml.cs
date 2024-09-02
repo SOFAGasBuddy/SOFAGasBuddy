@@ -15,8 +15,7 @@ namespace SOFAGasBuddy
     {
 
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        ToastDuration duration = ToastDuration.Short;
-        LogMe log = new();
+        ToastDuration duration = ToastDuration.Long;
 
         public Main()
         {
@@ -102,17 +101,19 @@ namespace SOFAGasBuddy
 
         private async void RefreshData()
         {
-            string ssn = string.Empty;
+            string id_type = string.Empty;
+            string id = string.Empty;
             string vrn = string.Empty;
 
             try
             {
-                ssn = await SecureStorage.Default.GetAsync("SSN");
+                id_type = await SecureStorage.Default.GetAsync("ID_TYPE");
+                id = await SecureStorage.Default.GetAsync("ID");
                 vrn = await SecureStorage.Default.GetAsync("VRN");
 
-                if (ssn == null || vrn == null)
+                if (id == null || vrn == null || id_type == null)
                 {
-                    var toast = Toast.Make("Please enter a SSN and VRN on the Settings page", duration, 14);
+                    var toast = Toast.Make("Please enter a valid ID, VRN and ID Type on the Settings page", duration, 14);
                     await toast.Show(cancellationTokenSource.Token);
                     return;
                 }
@@ -126,11 +127,11 @@ namespace SOFAGasBuddy
 
             EssoData gas = new();
 
-            var (balance, cars, success) = await gas.RefreshData(ssn, vrn);
+            var (balance, cars, success) = await gas.RefreshData(id_type, id, vrn);
 
             if (!success)
             {
-                var toast = Toast.Make("Error retrieving data", duration, 14);
+                var toast = Toast.Make(balance, duration, 14);
                 await toast.Show(cancellationTokenSource.Token);
                 return;
             }
@@ -172,9 +173,9 @@ namespace SOFAGasBuddy
                     lblRefresh.Text = String.Format("Last Refresh: {0}", GetPrettyDate(lr));
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                log.write(ex.ToString());
+                throw new Exception("Unable to load old data");
             }
         }
 

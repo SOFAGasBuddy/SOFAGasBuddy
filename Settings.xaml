@@ -3,15 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SOFAGasBuddy.Settings"
              Title="Settings">
-    <VerticalStackLayout Padding="10">
+    <VerticalStackLayout Padding="15">
         <Label 
-            Text="Social Security Number"
-            x:Name="lblSSN"
+            Text="ID Type"
+            x:Name="lblID_Type"
+            HorizontalOptions="Start"/>
+        <Picker x:Name ="pkrID_Type" Title="Select an ID type" HorizontalOptions="Start">
+                      
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Social Security Number</x:String>
+                    <x:String>Passport Number</x:String>
+                    <x:String>Driver's License Number</x:String>
+                    <x:String>Unit</x:String>
+                    <x:String>Other</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Label 
+            Text="ID"
+            x:Name="lblID"
             HorizontalOptions="Start" />
         <Entry
-            x:Name="txtSSN"
+            x:Name="txtID"
             HorizontalOptions="Start"
-            ToolTipProperties.Text="SSN"
+            ToolTipProperties.Text="Enter your ID"
             IsPassword="True"
             MaxLength="11"
             MinimumWidthRequest="150"
@@ -39,5 +56,7 @@
                 MinimumWidthRequest="150"
                 MinimumHeightRequest="50"
                 Margin="10"/>
+        <Label Text=""
+               x:Name="lblErrors" />
     </VerticalStackLayout>
 </ContentPage>

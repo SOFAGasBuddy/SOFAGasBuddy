@@ -23,7 +23,7 @@ namespace SOFAGasBuddy.Services
         //private readonly string VEHICLE_STATUS = "_ctl0_ContentPlaceHolder1_ucESSOPanel_dgridVehicleList__ctl2_lblVRNStat";
         private readonly string URL = "https://odin.aafes.com/esso/";
 
-        public async Task<(string balance, List<SOFAGasBuddy.Services.Car>, bool success)> RefreshData(string ssn, string vrn)
+        public async Task<(string balance, List<SOFAGasBuddy.Services.Car>, bool success)> RefreshData(string id_type, string id, string vrn)
         {
 
             HttpClient client = new();
@@ -46,12 +46,13 @@ namespace SOFAGasBuddy.Services
                 new KeyValuePair<string, string>("__VIEWSTATE", view_state),
                 new KeyValuePair<string, string>("__VIEWSTATEGENERATOR",view_state_gen),
                 new KeyValuePair<string, string>("__EVENTVALIDATION",event_validation),
-                new KeyValuePair<string, string>(ID_FIELD,ssn),
-                new KeyValuePair<string, string>(ID_TYPE_FIELD,"S"),
+                new KeyValuePair<string, string>(ID_FIELD,id),
+                new KeyValuePair<string, string>(ID_TYPE_FIELD,id_type),
                 new KeyValuePair<string, string>(VRN_FIELD,vrn),
                 new KeyValuePair<string, string>(SUBMIT_ID,"Log In")
 
               });
+
             try
             {
                 var response = await client.PostAsync(URL, content);
@@ -68,11 +69,12 @@ namespace SOFAGasBuddy.Services
                 }
                 else
                 {
-                    return ("Error", cars, success);
+                    return ("Bad response from ESSO server", cars, false);
                 }
 
                 HtmlDocument returned_data = new HtmlDocument();
                 returned_data.LoadHtml(responseContent);
+
                 var balance = returned_data.GetElementbyId(BALANCE_ID).InnerHtml;
                 var vehicles = returned_data.GetElementbyId(VEHICLE_TABLE_ID);
 
@@ -98,9 +100,13 @@ namespace SOFAGasBuddy.Services
                 }
                 return (balance, cars, success);
             }
+            catch (NullReferenceException)
+            {
+                return ("Login failed. Please verify your ID Type, ID and VRN", null, false);
+            }
             catch (Exception ex)
             {
-                throw new Exception($"Shit balls!: {ex.ToString()}");
+                throw new Exception($"Exception: {ex.ToString()}");
             }
         }
     }
