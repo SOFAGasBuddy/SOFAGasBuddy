@@ -15,8 +15,8 @@ public partial class Settings : ContentPage
     private string? vrn;
     private string? id_type;
 
-    CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-    ToastDuration duration = ToastDuration.Short;
+    readonly CancellationTokenSource cancellationTokenSource = new();
+    readonly ToastDuration duration = ToastDuration.Short;
 
     public Settings()
 	{
@@ -27,10 +27,6 @@ public partial class Settings : ContentPage
 
     private async void Get_Creds()
     {
-        Entry txtVRN = (Entry)FindByName("txtVRN");
-        Entry txtSSN = (Entry)FindByName("txtID");
-        Picker pkrID_TYPE = (Picker)FindByName("pkrID_Type");
-
         try
         {
             id = await SecureStorage.Default.GetAsync("ID");
@@ -39,29 +35,29 @@ public partial class Settings : ContentPage
 
             if (id != null && vrn != null && id_type != null)
             {
-                txtSSN.Text = id;
+                txtID.Text = id;
                 txtVRN.Text = vrn;
 
                 switch (id_type)
                 {
                     case "S":
-                        pkrID_TYPE.SelectedIndex = 0;
+                        pkrID_Type.SelectedIndex = 0;
                         break;
 
                     case "P":
-                        pkrID_TYPE.SelectedIndex = 1;
+                        pkrID_Type.SelectedIndex = 1;
                         break;
 
                     case "D":
-                        pkrID_TYPE.SelectedIndex = 2;
+                        pkrID_Type.SelectedIndex = 2;
                         break;
 
                     case "U":
-                        pkrID_TYPE.SelectedIndex = 3;
+                        pkrID_Type.SelectedIndex = 3;
                         break;
 
                     case "I":
-                        pkrID_TYPE.SelectedIndex = 4;
+                        pkrID_Type.SelectedIndex = 4;
                         break;
                 }
             }
@@ -100,7 +96,7 @@ public partial class Settings : ContentPage
             {
                 if (!Regex.Match(txtID.Text.Replace("-", ""), "^(\\d{9})$").Success)
                 {
-                    toast = Toast.Make("Invalid Social Security Number", duration, 14);
+                    toast = Toast.Make("Invalid Social Security Number, see Help tab for more information", duration, 14);
                     await toast.Show(cancellationTokenSource.Token);
                     return;
                 }
@@ -115,7 +111,7 @@ public partial class Settings : ContentPage
 
             if (!Regex.Match(txtVRN.Text.ToUpper(), "^([A-Z]{1,3}\\s[A-Z]{2}\\d{2,4})$").Success)
             {
-                toast = Toast.Make("VRN Formatted Incorrectly", duration, 14);
+                toast = Toast.Make("VRN Formatted Incorrectly, see Help tab for more information", duration, 14);
                 await toast.Show(cancellationTokenSource.Token);
                 return;
             }

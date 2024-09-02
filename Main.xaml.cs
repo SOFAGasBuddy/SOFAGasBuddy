@@ -104,6 +104,8 @@ namespace SOFAGasBuddy
             string? id;
             string? vrn;
 
+            var toast = Toast.Make("", duration, 14);
+
             try
             {
                 id_type = await SecureStorage.Default.GetAsync("ID_TYPE");
@@ -112,14 +114,14 @@ namespace SOFAGasBuddy
 
                 if (id == null || vrn == null || id_type == null)
                 {
-                    var toast = Toast.Make("Please enter a valid ID, VRN and ID Type on the Settings page", duration, 14);
+                    toast = Toast.Make("Please enter a valid ID, VRN and ID Type on the Settings page", duration, 14);
                     await toast.Show(cancellationTokenSource.Token);
                     return;
                 }
             }
             catch (Exception ex)
             {
-                var toast = Toast.Make(ex.ToString(), duration, 14);
+                toast = Toast.Make(ex.ToString(), duration, 14);
                 await toast.Show(cancellationTokenSource.Token);
                 return;
             }
@@ -130,7 +132,7 @@ namespace SOFAGasBuddy
 
             if (!success)
             {
-                var toast = Toast.Make(balance, duration, 14);
+                toast = Toast.Make(balance, duration, 14);
                 await toast.Show(cancellationTokenSource.Token);
                 return;
             }
@@ -152,6 +154,8 @@ namespace SOFAGasBuddy
             lblData.HorizontalTextAlignment = TextAlignment.Start;
             await SecureStorage.Default.SetAsync("LastData", lblText);
             await SecureStorage.Default.SetAsync("LastRefresh", now.ToString());
+            toast = Toast.Make("Data refreshed", duration, 14);
+            await toast.Show(cancellationTokenSource.Token);
         }
 
         private async void LoadOldData()
