@@ -22,7 +22,7 @@ namespace SOFAGasBuddy.Services
 
         private readonly string URL = "https://odin.aafes.com/esso/";
 
-        public async Task<(string balance, List<SOFAGasBuddy.Services.Car>, bool success)> RefreshData(string id_type, string id, string vrn)
+        public async Task<(string balance, List<SOFAGasBuddy.Services.Car>?, bool success)> RefreshData(string id_type, string id, string vrn)
         {
 
             HttpClient client = new();

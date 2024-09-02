@@ -44,7 +44,7 @@ namespace SOFAGasBuddy
             }
         }
 
-        static string GetPrettyDate(DateTime d)
+        static string? GetPrettyDate(DateTime d)
         {
             TimeSpan s = DateTime.Now.Subtract(d);
             int dayDiff = (int)s.TotalDays;
@@ -160,26 +160,17 @@ namespace SOFAGasBuddy
             {
                 string? lastdata = await SecureStorage.Default.GetAsync("LastData");
                 string? lastrefresh = await SecureStorage.Default.GetAsync("LastRefresh");
+                
                 if (lastdata != null)
                 {
                     lblData.Text = lastdata;
                     lblData.HorizontalTextAlignment = TextAlignment.Start;
                 }
-                else 
-                {
-                    lblData.Text = "Unable to retrieved cached data";
-                    lblData.HorizontalTextAlignment = TextAlignment.Start;
-                }
-
+                
                 if (lastrefresh != null)
                 {
                     DateTime lr = DateTime.Parse(lastrefresh);
                     lblRefresh.Text = String.Format("Last Refresh: {0}", GetPrettyDate(lr));
-                }
-                else
-                {
-                    lblRefresh.Text = "Unable to retrieved cached data";
-                    lblRefresh.HorizontalTextAlignment = TextAlignment.Start;
                 }
             }
             catch

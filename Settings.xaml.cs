@@ -21,7 +21,8 @@ public partial class Settings : ContentPage
     public Settings()
 	{
         InitializeComponent();
-        Get_Creds();    
+        Get_Creds();
+        lblErrors.Text = "";
     }
 
     private async void Get_Creds()
@@ -63,50 +64,33 @@ public partial class Settings : ContentPage
                         pkrID_TYPE.SelectedIndex = 4;
                         break;
                 }
-                
             }
         }
         catch {
             throw new Exception("Error retrieving credentials");
         }
-
     }
 
     private async void BtnSave_Clicked(object sender, EventArgs e)
     {
-        Entry txtVRN = (Entry)FindByName("txtVRN");
-        Entry txtID = (Entry)FindByName("txtID");
-        Picker pkrID_TYPE = (Picker)FindByName("pkrID_Type");
-
-        Label lblErrors = (Label)FindByName("lblErrors");
-
         lblErrors.Text = "";
-        
-        int id_type_index = pkrID_TYPE.SelectedIndex;
-
+        int id_type_index = pkrID_Type.SelectedIndex;
         string id_type = "";
 
         try
         {
             var toast = Toast.Make("", duration, 14);
             
-            if (txtID.Text == "")
-            {
-                toast = Toast.Make("ID is blank", duration, 14);
-                await toast.Show(cancellationTokenSource.Token);
-                return;
-            }
-
-            if (txtVRN.Text == "")
-            {
-                toast = Toast.Make("VRN is blank", duration, 14);
-                await toast.Show(cancellationTokenSource.Token);
-                return;
-            }
-
-            if (pkrID_TYPE.SelectedIndex == -1)
+            if (pkrID_Type.SelectedIndex == -1)
             {
                 toast = Toast.Make("Please select an ID type", duration, 14);
+                await toast.Show(cancellationTokenSource.Token);
+                return;
+            }
+
+            if (txtID.Text == null)
+            {
+                toast = Toast.Make("ID is blank", duration, 14);
                 await toast.Show(cancellationTokenSource.Token);
                 return;
             }
@@ -114,7 +98,7 @@ public partial class Settings : ContentPage
             //Only validates SSNs for the moment
             if (id_type_index == 0)
             {
-                if (!Regex.Match(txtID.Text.Replace("-", ""), "\\d{9}").Success)
+                if (!Regex.Match(txtID.Text.Replace("-", ""), "^(\\d{9})$").Success)
                 {
                     toast = Toast.Make("Invalid Social Security Number", duration, 14);
                     await toast.Show(cancellationTokenSource.Token);
@@ -122,14 +106,21 @@ public partial class Settings : ContentPage
                 }
             }
 
-            if (!Regex.Match(txtVRN.Text, "[A-Z]{1,3}\\s[A-Z]{2}\\d{2,4}").Success)
+            if (txtVRN.Text == null)
+            {
+                toast = Toast.Make("VRN is blank", duration, 14);
+                await toast.Show(cancellationTokenSource.Token);
+                return;
+            }
+
+            if (!Regex.Match(txtVRN.Text.ToUpper(), "^([A-Z]{1,3}\\s[A-Z]{2}\\d{2,4})$").Success)
             {
                 toast = Toast.Make("VRN Formatted Incorrectly", duration, 14);
                 await toast.Show(cancellationTokenSource.Token);
                 return;
             }
 
-            switch(pkrID_TYPE.SelectedIndex)
+            switch(pkrID_Type.SelectedIndex)
             {
                 case 0:
                     id_type = "S";
@@ -150,16 +141,14 @@ public partial class Settings : ContentPage
                 case 4:
                     id_type = "I";
                     break;
-
         }
 
-            await SecureStorage.Default.SetAsync("ID", txtID.Text);
-            await SecureStorage.Default.SetAsync("VRN", txtVRN.Text);
+            await SecureStorage.Default.SetAsync("ID", txtID.Text.ToUpper());
+            await SecureStorage.Default.SetAsync("VRN", txtVRN.Text.ToUpper());
             await SecureStorage.Default.SetAsync("ID_TYPE", id_type);
             
             toast = Toast.Make("Saved", duration, 14);
             await toast.Show(cancellationTokenSource.Token);
-
         }
 
         catch (Exception ex)
@@ -170,10 +159,6 @@ public partial class Settings : ContentPage
 
     private void BtnClear_Clicked(object sender, EventArgs e)
     {
-        Entry txtVRN = (Entry)FindByName("txtVRN");
-        Entry txtSSN = (Entry)FindByName("txtID");
-        Entry pkrID_TYPE = (Entry)FindByName("pkrID_TYPE");
-
         bool id_type_success = SecureStorage.Default.Remove("ID_TYPE");
         bool id_success = SecureStorage.Default.Remove("ID");
         bool vrn_success = SecureStorage.Default.Remove("VRN");
@@ -181,11 +166,11 @@ public partial class Settings : ContentPage
         if (id_success && vrn_success && id_type_success)
         {
             pkrID_Type.SelectedIndex = -1;
-            txtSSN.Text = "";
-            txtVRN.Text = "";
+            txtID.Text = null;
+            txtVRN.Text = null;
+
             var toast = Toast.Make("All data cleared", duration, 14);
             toast.Show(cancellationTokenSource.Token);  
-
         }
         else
         {

@@ -30,7 +30,6 @@
             HorizontalOptions="Start"
             ToolTipProperties.Text="Enter your ID"
             IsPassword="True"
-            MaxLength="11"
             MinimumWidthRequest="150"
             MinimumHeightRequest="50"/>
         <Label
