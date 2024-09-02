@@ -1,4 +1,4 @@
-﻿v1.1 --------------date
+﻿v1.1 2 Sept 2024
 
 - Added ID types to show the State Department some love (and others who use Driver's License, Unit and Other, whatever those are)
 - Removed some... colorful language from the source code

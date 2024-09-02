@@ -39,13 +39,14 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
 	  <NoWarn>1701;1702;CS0103;ENC0046</NoWarn>
-	  <ApplicationDisplayVersion>1.1.0</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>5.1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>6</ApplicationVersion>
 	  <ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
 	  <NoWarn>1701;1702;CS0103;ENC0046;CA1416;SYSLIB1045</NoWarn>
-	  <ApplicationDisplayVersion>1.1.0</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>5.1.0</ApplicationDisplayVersion>
 	  <ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
 	  <ApplicationTitle>SOFA Gas Buddy</ApplicationTitle>
 	  <ApplicationVersion>6</ApplicationVersion>
@@ -55,13 +56,13 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
 	  <NoWarn>1701;1702;CS0103;ENC0046</NoWarn>
-	  <ApplicationDisplayVersion>1.1.0</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>5.1.0</ApplicationDisplayVersion>
 	  <ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
 	  <NoWarn>1701;1702;CS0103;ENC0046;CA1416;SYSLIB1045</NoWarn>
-	  <ApplicationDisplayVersion>1.1.0</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>5.1.0</ApplicationDisplayVersion>
 	  <ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
 	  <ApplicationTitle>SOFA Gas Buddy</ApplicationTitle>
 	  <ApplicationVersion>6</ApplicationVersion>
@@ -71,14 +72,14 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android34.0|AnyCPU'">
 	  <ApplicationTitle>SOFA Gas Buddy</ApplicationTitle>
 	  <ApplicationVersion>6</ApplicationVersion>
-	  <ApplicationDisplayVersion>1.1</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>5.1</ApplicationDisplayVersion>
 	  <NoWarn>1701;1702;SYSLIB1045;CA1416</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android34.0|AnyCPU'">
 	  <ApplicationTitle>SOFA Gas Buddy</ApplicationTitle>
 	  <ApplicationVersion>6</ApplicationVersion>
-	  <ApplicationDisplayVersion>1.1</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>5.1</ApplicationDisplayVersion>
 	  <NoWarn>1701;1702;SYSLIB1045;CA1416</NoWarn>
 	</PropertyGroup>
 
