@@ -17,10 +17,14 @@
             <Label
                 Padding="30,0,10,10"
                 FontSize="Small"
-                Text = "Select the ID that is associated with your account"/>            
+                Text = "Select the ID type that is associated with your account."/>
             <Label 
                 Text="ID"
                 Padding="10,0,0,0"
+                FontSize="Medium"/>
+            <Label 
+                Text="SSN"
+                Padding="20,0,0,0"
                 FontSize="Medium"/>
             <Label
                 Padding="30,0,10,10"
@@ -32,7 +36,22 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-
+            <Label 
+                Text="Passport"
+                Padding="20,0,0,0"
+                FontSize="Medium"/>
+            <Label
+                Padding="30,0,10,10"
+                FontSize="Small"
+                Text="Input your passport number exactly as it appears on your passport, include any letters."/>
+            <Label 
+                Text="Driver's License/Unit/Other"
+                Padding="20,0,0,0"
+                FontSize="Medium"/>
+                        <Label
+                Padding="30,0,10,10"
+                FontSize="Small"
+                Text="Honestly, I don't know. Input them in the format that you were instructed to use when setting up your account. Please contact AAFES directly for support. Test using your credentials directly on AAFES' ESSO website to ensure you get them correct."/>
             <Label 
                 Text="VRN"
                 Padding="10,0,0,0"
@@ -41,6 +60,20 @@
             <Label Text="This is the Vehicle Registraion Number (Plate Number) of any car on the account. And it must be exactly as it is written on the registration form, i.e. all caps and a space between the Landkreis and vehicle number. &#10;&#10;Example: S XX1234&#10;&#10;The S in the above exmaple is for Stuttgart. If your vehicle was registered in Wiesbaden, then it would be WI instead."
                 Padding="30,0,10,0"
                 FontSize="Small"/>
+            <Label 
+                Text="More help"
+                Padding="10,0,0,0"
+                FontSize="Medium"/>
+            <Label
+                Padding="30,0,10,10"
+                FontSize="Small">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span>Sends us an email and we'll do what we can.</Span>
+                        <local:HyperlinkSpan Text=" sofagasbuddy@gmail.com" Url="mailto:sofagasbuddy@gmail.com"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

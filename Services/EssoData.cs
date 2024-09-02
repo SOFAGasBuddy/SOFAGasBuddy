@@ -18,9 +18,8 @@ namespace SOFAGasBuddy.Services
         private readonly string VRN_FIELD = "_ctl0:ContentPlaceHolder1:ucAuthenticate:tbxVRN";
         private readonly string SUBMIT_ID = "_ctl0:ContentPlaceHolder1:ucAuthenticate:btnLogIn";
         private readonly string BALANCE_ID = "_ctl0_ContentPlaceHolder1_ucESSOPanel_lblAccountBalance";
-        //private readonly string VEHICLE_ID = "_ctl0_ContentPlaceHolder1_ucESSOPanel_dgridVehicleList__ctl5_lnkbtnDetails";
         private readonly string VEHICLE_TABLE_ID = "_ctl0_ContentPlaceHolder1_ucESSOPanel_dgridVehicleList";
-        //private readonly string VEHICLE_STATUS = "_ctl0_ContentPlaceHolder1_ucESSOPanel_dgridVehicleList__ctl2_lblVRNStat";
+
         private readonly string URL = "https://odin.aafes.com/esso/";
 
         public async Task<(string balance, List<SOFAGasBuddy.Services.Car>, bool success)> RefreshData(string id_type, string id, string vrn)
@@ -104,6 +103,7 @@ namespace SOFAGasBuddy.Services
             {
                 return ("Login failed. Please verify your ID Type, ID and VRN", null, false);
             }
+
             catch (Exception ex)
             {
                 throw new Exception($"Exception: {ex.ToString()}");

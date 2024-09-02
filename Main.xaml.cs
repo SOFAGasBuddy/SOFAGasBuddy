@@ -14,8 +14,8 @@ namespace SOFAGasBuddy
     public partial class Main : ContentPage
     {
 
-        CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        ToastDuration duration = ToastDuration.Long;
+        readonly CancellationTokenSource cancellationTokenSource = new();
+        readonly ToastDuration duration = ToastDuration.Long;
 
         public Main()
         {
@@ -35,7 +35,7 @@ namespace SOFAGasBuddy
 
         public async void UpdateRefreshedTime()
         {
-            string lastrefresh = await SecureStorage.Default.GetAsync("LastRefresh");
+            string? lastrefresh = await SecureStorage.Default.GetAsync("LastRefresh");
 
             if (lastrefresh != null)
             {
@@ -46,7 +46,6 @@ namespace SOFAGasBuddy
 
         static string GetPrettyDate(DateTime d)
         {
-
             TimeSpan s = DateTime.Now.Subtract(d);
             int dayDiff = (int)s.TotalDays;
             int secDiff = (int)s.TotalSeconds;
@@ -101,9 +100,9 @@ namespace SOFAGasBuddy
 
         private async void RefreshData()
         {
-            string id_type = string.Empty;
-            string id = string.Empty;
-            string vrn = string.Empty;
+            string? id_type;
+            string? id;
+            string? vrn;
 
             try
             {
@@ -159,11 +158,16 @@ namespace SOFAGasBuddy
         {
             try
             {
-                string lastdata = await SecureStorage.Default.GetAsync("LastData");
-                string lastrefresh = await SecureStorage.Default.GetAsync("LastRefresh");
+                string? lastdata = await SecureStorage.Default.GetAsync("LastData");
+                string? lastrefresh = await SecureStorage.Default.GetAsync("LastRefresh");
                 if (lastdata != null)
                 {
                     lblData.Text = lastdata;
+                    lblData.HorizontalTextAlignment = TextAlignment.Start;
+                }
+                else 
+                {
+                    lblData.Text = "Unable to retrieved cached data";
                     lblData.HorizontalTextAlignment = TextAlignment.Start;
                 }
 
@@ -171,6 +175,11 @@ namespace SOFAGasBuddy
                 {
                     DateTime lr = DateTime.Parse(lastrefresh);
                     lblRefresh.Text = String.Format("Last Refresh: {0}", GetPrettyDate(lr));
+                }
+                else
+                {
+                    lblRefresh.Text = "Unable to retrieved cached data";
+                    lblRefresh.HorizontalTextAlignment = TextAlignment.Start;
                 }
             }
             catch

@@ -11,9 +11,9 @@ namespace SOFAGasBuddy;
 
 public partial class Settings : ContentPage
 {
-    private string id;
-    private string vrn;
-    private string id_type;
+    private string? id;
+    private string? vrn;
+    private string? id_type;
 
     CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
     ToastDuration duration = ToastDuration.Short;
@@ -161,17 +161,15 @@ public partial class Settings : ContentPage
             await toast.Show(cancellationTokenSource.Token);
 
         }
-        catch (Exception ex) {
-           
+
+        catch (Exception ex)
+        {
             lblErrors.Text = ex.ToString();
-           
         }
     }
 
     private void BtnClear_Clicked(object sender, EventArgs e)
     {
-
-
         Entry txtVRN = (Entry)FindByName("txtVRN");
         Entry txtSSN = (Entry)FindByName("txtID");
         Entry pkrID_TYPE = (Entry)FindByName("pkrID_TYPE");
@@ -189,7 +187,10 @@ public partial class Settings : ContentPage
             toast.Show(cancellationTokenSource.Token);  
 
         }
-
-
+        else
+        {
+            var toast = Toast.Make("Error clearing data, please try again", duration, 14);
+            toast.Show(cancellationTokenSource.Token);
+        }
     }
 }

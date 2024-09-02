@@ -11,7 +11,7 @@ namespace SOFAGasBuddy
         {
             InitializeComponent();
             // Enable verbose OneSignal logging to debug issues if needed.
-            OneSignal.Debug.LogLevel = LogLevel.VERBOSE;
+            OneSignal.Debug.LogLevel = LogLevel.ERROR;
 
             // OneSignal Initialization
             OneSignal.Initialize("3824bae2-5cab-437b-9c86-a0b8f4033bcf");
