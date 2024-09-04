@@ -1,4 +1,7 @@
-﻿v1.1 2 Sept 2024
+﻿4 Sept 2024
+ - Apple strikes again. Have to change version number to yy.mmdd.hh so that it's bigger than 5.x. Thanks crapple.
+
+v1.1 2 Sept 2024
 
 - Added ID types to show the State Department some love (and others who use Driver's License, Unit and Other, whatever those are)
 - Removed some... colorful language from the source code
