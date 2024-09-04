@@ -20,7 +20,7 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>SOFAGasBuddy</ApplicationTitle>
+		<ApplicationTitle>SOFA Gas Buddy</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
@@ -41,7 +41,7 @@
 	  <NoWarn>1701;1702;CS0103;ENC0046</NoWarn>
     <ApplicationDisplayVersion>$([System.DateTime]::Now.ToString('yy')).$([System.DateTime]::Now.ToString('MM'))$([System.DateTime]::Now.ToString('dd')).$([System.DateTime]::Now.ToString('HH'))</ApplicationDisplayVersion>
     <ApplicationVersion>$([System.DateTime]::Now.ToString('yyMMddHH'))</ApplicationVersion>
-	  <ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
+    <ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
@@ -49,8 +49,8 @@
     <ApplicationDisplayVersion>$([System.DateTime]::Now.ToString('yy')).$([System.DateTime]::Now.ToString('MM'))$([System.DateTime]::Now.ToString('dd')).$([System.DateTime]::Now.ToString('HH'))</ApplicationDisplayVersion>
     <ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
 	  <ApplicationTitle>SOFA Gas Buddy</ApplicationTitle>
-	  <ApplicationVersion>$([System.DateTime]::Now.ToString('yyMMddHH'))</ApplicationVersion>
-	  <MtouchUseLlvm>False</MtouchUseLlvm>
+    <ApplicationVersion>$([System.DateTime]::Now.ToString('yyMMddHH'))</ApplicationVersion>
+    <MtouchUseLlvm>False</MtouchUseLlvm>
 	  <BuildIpa>False</BuildIpa>
 	</PropertyGroup>
 
@@ -58,7 +58,7 @@
 	  <NoWarn>1701;1702;CS0103;ENC0046</NoWarn>
     <ApplicationDisplayVersion>$([System.DateTime]::Now.ToString('yy')).$([System.DateTime]::Now.ToString('MM'))$([System.DateTime]::Now.ToString('dd')).$([System.DateTime]::Now.ToString('HH'))</ApplicationDisplayVersion>
     <ApplicationVersion>$([System.DateTime]::Now.ToString('yyMMddHH'))</ApplicationVersion>
-	  <ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
+    <ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
@@ -67,7 +67,7 @@
     <ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
 	  <ApplicationTitle>SOFA Gas Buddy</ApplicationTitle>
     <ApplicationVersion>$([System.DateTime]::Now.ToString('yyMMddHH'))</ApplicationVersion>
-	  <BuildIpa>False</BuildIpa>
+    <BuildIpa>False</BuildIpa>
 	  <ShouldCreateLogs>True</ShouldCreateLogs>
 	  <AdvancedSettingsExpanded>True</AdvancedSettingsExpanded>
 	  <UpdateAssemblyVersion>False</UpdateAssemblyVersion>
