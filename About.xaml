@@ -55,7 +55,6 @@
                 <Label.FormattedText>
                     <FormattedString>
                         <local:HyperlinkSpan Text="Source Code (GitHub)" Url="https://github.com/SOFAGasBuddy"/>
-                        <local:HyperlinkSpan Text="OneSignal (For push notifications)" Url="https://documentation.onesignal.com/docs/net-sdk-setup/>"/>
                         <Span Text="{x:Static system:Environment.NewLine}"/>
                         <local:HyperlinkSpan Text="Also thanks to Html Agility Pack" Url="https://html-agility-pack.net/"/>
 
