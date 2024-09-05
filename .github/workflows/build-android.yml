@@ -2,10 +2,18 @@ name: Build Android
 
 on:
   workflow_dispatch:
-  #push:
-    #branches: [ "main" ]
-  #pull_request:
-    #branches: [ "main" ]
+  push:
+    branches: [ "main" ]
+    paths-ignore:
+      - "**.md"
+      - '**/*.gitignore'
+      - '**/*.gitattributes'
+      - '**/*.yml'
+      - '**.txt'
+      - '**/*.txt'
+  
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
