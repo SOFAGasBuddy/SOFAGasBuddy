@@ -24,13 +24,9 @@ on:
       - '**/*.txt'
   pull_request:
     branches: [ "main" ]
-    paths-ignore:
-      - "**.md"
-      - '**/*.gitignore'
-      - '**/*.gitattributes'
-      - '**/*.yml'
-  schedule:
-    - cron: '32 3 * * 3'
+
+  #schedule:
+    #- cron: '32 3 * * 3'
 
 jobs:
   analyze:
