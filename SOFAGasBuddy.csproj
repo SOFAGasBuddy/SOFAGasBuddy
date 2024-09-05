@@ -98,6 +98,14 @@
 	  <CodesignProvision>AppStoreDistribute</CodesignProvision>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(TargetFramework)'=='net8.0-android'">
+	<TargetFrameworks>net8.0-android</TargetFramworks>
+	  <NoWarn>1701;1702;CS0103;ENC0046</NoWarn>
+    <ApplicationDisplayVersion>$([System.DateTime]::Now.ToString('yy')).$([System.DateTime]::Now.ToString('MM'))$([System.DateTime]::Now.ToString('dd')).$([System.DateTime]::Now.ToString('HH'))</ApplicationDisplayVersion>
+    <ApplicationVersion>$([System.DateTime]::Now.ToString('yyMMddHH'))</ApplicationVersion>
+    <ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- App Icon -->
 
