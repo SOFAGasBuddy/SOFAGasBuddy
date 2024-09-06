@@ -70,14 +70,14 @@ jobs:
     - name: Publish MAUI Android AAB
       run: dotnet publish ${{inputs.project-file}} -c ${{ inputs.build-config }} -f ${{ inputs.dotnet-version-target }}-android34.0 /p:AndroidPackageFormats=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyStore=ourkeystore.jks /p:AndroidSigningKeyAlias=${{secrets.keystore-alias}} /p:AndroidSigningKeyPass="${{ secrets.keystore-password }}" /p:AndroidSigningStorePass="${{ secrets.keystore-password }}" --no-restore
 
-    - name: What was produced?
-      run: Get-ChildItem -Recurse ./*
+    #- name: What was produced?
+     # run: Get-ChildItem -Recurse ./*
     
-    - uses: r0adkll/upload-google-play@v1.0.17
+    - uses: r0adkll/upload-google-play@v1.1.3
       name: Upload Android Artifact to Play Console
       with:
         serviceAccountJsonPlainText: ${{ secrets.playstore-service-account }}
-        packageName: com.cyberaustin.sofagasbuddy
+        packageName: 'com.cyberaustin.sofagasbuddy'
         releaseFiles: ${{ github.workspace }}\${{ inputs.project-folder }}\bin\${{ inputs.build-config }}\${{ inputs.dotnet-version-target }}-android34.0\${{ inputs.package-name }}-Signed.aab
         #releaseFiles: ${{ github.workspace }}\${{ inputs.project-folder }}\bin\${{ inputs.build-config }}\${{ inputs.dotnet-version-target }}-android34.0\com.cyberaustin.sofagasbuddy-Signed.aab
         track: internal
