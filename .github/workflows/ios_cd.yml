@@ -67,8 +67,8 @@ jobs:
       # These expire on a yearly basis, so check if they're still valid!
       - uses: apple-actions/import-codesign-certs@v2
         with: 
-          p12-file-base64: ${{ secrets.CERTIFICATES_P12 }}
-          p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }} 
+          p12-file-base64: ${{ secrets.p12-cert }}
+          p12-password: ${{ secrets.p12-cert-password }} 
     
       - name: Download Provisioning Profiles
         id: provisioning
@@ -76,9 +76,9 @@ jobs:
         with: 
           bundle-id: ${{ inputs.package-name }}
           profile-type: 'IOS_APP_STORE'
-          issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
-          api-key-id: ${{ secrets.APPSTORE_KEYID }}
-          api-private-key: ${{ secrets.APPSTORE_PRIVATE_KEY }}
+          issuer-id: ${{ secrets.appstore-issuer }}
+          api-key-id: ${{ secrets.appstore-keyid }}
+          api-private-key: ${{ secrets.appstore-private-key }}
 
       - name: Publish the iOS app
         run: dotnet publish ${{inputs.project-file}} -c ${{ inputs.build-config }} -f:${{ inputs.dotnet-version-target }}-ios /p:ArchiveOnBuild=true /p:EnableAssemblyILStripping=false
@@ -87,6 +87,6 @@ jobs:
         uses: apple-actions/upload-testflight-build@v1
         with:
           app-path: ${{ github.workspace }}/${{ inputs.project-folder }}/bin/${{ inputs.build-config }}/${{ inputs.dotnet-version-target }}-ios/ios-arm64/publish/${{ inputs.project-folder }}.ipa
-          issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
-          api-key-id: ${{ secrets.APPSTORE_KEYID }}
-          api-private-key: ${{ secrets.APPSTORE_PRIVATE_KEY }}
+          issuer-id: ${{ secrets.appstore-issuer }}
+          api-key-id: ${{ secrets.appstore-keyid }}
+          api-private-key: ${{ secrets.appstore-private-key }}
