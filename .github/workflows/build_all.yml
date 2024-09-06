@@ -62,7 +62,7 @@ jobs:
       build-config: 'Release'
       #build-version: ${{ needs.vars.outputs.buildVersion }}
     secrets:
-      keystore: ${{ secrets.PLAY_KEYSTORE }}
+      keystore: ${{ secrets.KEYSTORE_FILE }}
       keystore-alias: ${{ secrets.PLAY_KEYSTORE_ALIAS }}
-      keystore-password: ${{ secrets.PLAY_KEYSTORE_PASS }}
+      keystore-password: ${{ secrets.KEYSTORE_PASSWORD }}
       playstore-service-account: ${{ secrets.PLAYSTORE_SERVICE_ACC }}
