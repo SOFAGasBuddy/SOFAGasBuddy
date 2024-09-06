@@ -35,7 +35,7 @@ jobs:
 
   build-ios:
     needs: vars 
-    uses: ./.github/workflows/cd-ios.yml
+    uses: ./.github/workflows/ios-cd.yml
     with:
       dotnet-version: ${{ needs.vars.outputs.dotnetVersion }}
       dotnet-version-target: ${{ needs.vars.outputs.dotnetVersionTargets }}
