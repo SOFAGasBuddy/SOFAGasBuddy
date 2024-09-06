@@ -72,5 +72,6 @@ jobs:
       with:
         serviceAccountJsonPlainText: ${{ secrets.playstore-service-account }}
         packageName: ${{ inputs.package-name }}
-        releaseFiles: ${{ github.workspace }}\${{ inputs.project-folder }}\bin\${{ inputs.build-config }}\${{ inputs.dotnet-version-target }}-android34.0\${{ inputs.package-name }}-Signed.aab
+        #releaseFiles: ${{ github.workspace }}\${{ inputs.project-folder }}\bin\${{ inputs.build-config }}\${{ inputs.dotnet-version-target }}-android34.0\${{ inputs.package-name }}-Signed.aab
+        releaseFiles: ${{ github.workspace }}\${{ inputs.project-folder }}\bin\${{ inputs.build-config }}\${{ inputs.dotnet-version-target }}-android34.0\com.cyberaustin.sofagasbuddy-Signed.aab
         track: internal
