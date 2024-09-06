@@ -60,6 +60,7 @@ jobs:
       project-file: ${{ needs.vars.outputs.csprojToBuild }}
       project-folder: ${{ needs.vars.outputs.projectFolder }}
       build-config: 'Release'
+      package-name: 'com.cyberaustin.sofagasbuddy'
       #build-version: ${{ needs.vars.outputs.buildVersion }}
     secrets:
       keystore: ${{ secrets.KEYSTORE_FILE }}
