@@ -62,7 +62,7 @@ jobs:
       with:
         fileDir: '${{ github.workspace }}\${{ inputs.project-folder }}'
         fileName: 'ourkeystore.jks'
-        encodedString: ${{ secrets.KEYSTORE_FILE }}
+        encodedString: ${{ secrets.keystore }}
         run: dotnet restore ${{ inputs.project-file }}
   
     - name: Publish MAUI Android AAB
