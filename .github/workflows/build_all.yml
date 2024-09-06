@@ -53,7 +53,7 @@ jobs:
 
   build-android:
     needs: vars
-    uses: ./.github/workflows/cd-android.yml
+    uses: ./.github/workflows/android-cd.yml
     with:
       dotnet-version: ${{ needs.vars.outputs.dotnetVersion }}
       dotnet-version-target: ${{ needs.vars.outputs.dotnetVersionTargets }}
