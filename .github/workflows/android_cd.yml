@@ -54,7 +54,8 @@ jobs:
       run: dotnet workload install maui --ignore-failed-sources
   
     - name: Restore Dependencies
-  
+      run: dotnet restore ${{ inputs.project-file }}
+ 
     - name: Decode Keystore
       id: decode_keystore
       uses: timheuer/base64-to-file@v1
