@@ -22,9 +22,9 @@ on:
       build-config:
         required: true
         type: string
-      build-version:
-        required: true
-        type: string
+      #build-version:
+        #required: true
+        #type: string
     secrets:      
       p12-cert:
         required: true
