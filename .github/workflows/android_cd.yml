@@ -91,7 +91,7 @@ jobs:
     - name: Upload App to Google Play Console
       uses: lukasa1993/android-upload-google-play@v2.0.0
       with:
-        service-account: ${{ secrets.PLAYSTORE_SERVICE_ACC }}
+        service-account: ${{ secrets.playstore-service-account }}
         package-name: com.cyberaustin.sofagasbuddy
         release-file: bin\Release\net8.0-android34.0\publish\com.cyberaustin.sofagasbuddy-Signed.aab
         track: production
