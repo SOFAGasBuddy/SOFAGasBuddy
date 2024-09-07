@@ -79,11 +79,22 @@ jobs:
           ./**/*.aab
           ./**/*.apk
     
-    - uses: r0adkll/upload-google-play@v1.1.3
-      name: Upload Android Artifact to Play Console
-      with:
-        serviceAccountJsonPlainText: ${{ secrets.playstore-service-account }}
-        packageName: 'com.cyberaustin.sofagasbuddy'
-        releaseFiles: ${{ github.workspace }}\${{ inputs.project-folder }}\bin\${{ inputs.build-config }}\${{ inputs.dotnet-version-target }}-android34.0\com.cyberaustin.sofagasbuddy-Signed.aab
+    #- uses: r0adkll/upload-google-play@v1.1.3
+      #name: Upload Android Artifact to Play Console
+      #with:
+        #serviceAccountJsonPlainText: ${{ secrets.playstore-service-account }}
+        #packageName: 'com.cyberaustin.sofagasbuddy'
         #releaseFiles: ${{ github.workspace }}\${{ inputs.project-folder }}\bin\${{ inputs.build-config }}\${{ inputs.dotnet-version-target }}-android34.0\com.cyberaustin.sofagasbuddy-Signed.aab
-        track: internal
+        #releaseFiles: ${{ github.workspace }}\${{ inputs.project-folder }}\bin\${{ inputs.build-config }}\${{ inputs.dotnet-version-target }}-android34.0\com.cyberaustin.sofagasbuddy-Signed.aab
+        #track: internal
+
+    - name: Upload App to Google Play Console
+      uses: lukasa1993/android-upload-google-play@v2.0.0
+      with:
+        service-account: ${{ secrets.PLAYSTORE_SERVICE_ACC }}
+        package-name: com.cyberaustin.sofagasbuddy
+        release-file: bin\Release\net8.0-android34.0\publish\com.cyberaustin.sofagasbuddy-Signed.aab
+        track: production
+        status: complete
+        #whatsnew-directory: whatsnew
+        #mapping-file: app/build/outputs/mapping/release/mapping.txt
