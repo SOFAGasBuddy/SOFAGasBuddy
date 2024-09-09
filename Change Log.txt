@@ -1,4 +1,9 @@
-﻿4 Sept 2024
+﻿9 Sept 2024
+- Added version to about tab
+- Added ability to send last error to sofagasbuddy@gmail.com
+- Fixed my rook mistake on validating the VRN
+
+4 Sept 2024
  - Apple strikes again. Have to change version number to yy.mmdd.hh so that it's bigger than 5.x. Thanks crapple.
 
 v1.1 2 Sept 2024

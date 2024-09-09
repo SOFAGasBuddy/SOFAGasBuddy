@@ -123,6 +123,7 @@ namespace SOFAGasBuddy
             {
                 toast = Toast.Make(ex.ToString(), duration, 14);
                 await toast.Show(cancellationTokenSource.Token);
+                await SecureStorage.Default.SetAsync("LAST_ERR", ex.ToString());
                 return;
             }
 
@@ -179,6 +180,7 @@ namespace SOFAGasBuddy
             }
             catch
             {
+                await SecureStorage.Default.SetAsync("LAST_ERR", "Unable to load old data");
                 throw new Exception("Unable to load old data");
             }
         }

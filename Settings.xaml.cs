@@ -63,6 +63,7 @@ public partial class Settings : ContentPage
             }
         }
         catch {
+            await SecureStorage.Default.SetAsync("LAST_ERR", "Error retreiving credentials");
             throw new Exception("Error retrieving credentials");
         }
     }
@@ -109,7 +110,7 @@ public partial class Settings : ContentPage
                 return;
             }
 
-            if (!Regex.Match(txtVRN.Text.ToUpper(), "^([A-Z]{1,3}\\s[A-Z]{2}\\d{2,4})$").Success || !Regex.Match(txtVRN.Text.ToUpper(), "^([A-Z]{1,3}\\s\\d{2,4})$").Success)
+            if (!Regex.Match(txtVRN.Text.ToUpper(), "^([A-Z]{1,3}\\s[A-Z]{2}\\d{2,4})$").Success && !Regex.Match(txtVRN.Text.ToUpper(), "^([A-Z]{1,3}\\s\\d{2,4})$").Success)
             {
                 toast = Toast.Make("VRN Formatted Incorrectly, see Help tab for more information", duration, 14);
                 await toast.Show(cancellationTokenSource.Token);
@@ -150,6 +151,7 @@ public partial class Settings : ContentPage
         catch (Exception ex)
         {
             lblErrors.Text = ex.ToString();
+            await SecureStorage.Default.SetAsync("LAST_ERR", ex.ToString());
         }
     }
 

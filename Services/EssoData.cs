@@ -68,6 +68,7 @@ namespace SOFAGasBuddy.Services
                 }
                 else
                 {
+                    await SecureStorage.Default.SetAsync("LAST_ERR", "Bad response from Esso server");
                     return ("Bad response from ESSO server", cars, false);
                 }
 
@@ -101,11 +102,13 @@ namespace SOFAGasBuddy.Services
             }
             catch (NullReferenceException)
             {
+                await SecureStorage.Default.SetAsync("LAST_ERR", "Login failed. Please verify your ID type, ID and VRN");
                 return ("Login failed. Please verify your ID Type, ID and VRN", null, false);
             }
 
             catch (Exception ex)
             {
+                await SecureStorage.Default.SetAsync("LAST_ERR", "Error retreiving credentials");
                 throw new Exception($"Exception: {ex.ToString()}");
             }
         }

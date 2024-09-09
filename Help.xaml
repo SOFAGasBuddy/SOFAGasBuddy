@@ -74,6 +74,12 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
+            <Button
+                x:Name="btnMailError"
+                Padding="30"
+                FontSize="Small"
+                Clicked="MailErrorButton_Clicked"
+                Text="Click here to send us the last error you received."/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

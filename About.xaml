@@ -28,6 +28,14 @@
                 </Label.FormattedText>
             </Label>
 
+            <Label x:Name="lblVersion" FontSize="Small" Style="{StaticResource SubHeadline}" SemanticProperties.HeadingLevel="Level2" SemanticProperties.Description="App Version">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span FontSize="Small" Text="App version"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
             <Label FontSize="Small" Style="{StaticResource SubHeadline}" SemanticProperties.HeadingLevel="Level2" SemanticProperties.Description="Copyright Information">
                 <Label.FormattedText>
                     <FormattedString>
