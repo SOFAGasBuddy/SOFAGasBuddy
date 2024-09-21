@@ -1,4 +1,7 @@
-﻿9 Sept 2024
+﻿21 Sept 2024
+- Updated license to Creative Commons non-commercial
+
+9 Sept 2024
 - Added version to about tab
 - Added ability to send last error to sofagasbuddy@gmail.com
 - Fixed my rook mistake on validating the VRN
