@@ -13,17 +13,22 @@
         Route="Main" />
 
     <ShellContent
-    Title="Settings"
-    ContentTemplate="{DataTemplate local:Settings}"
-    Route="Settings" />
+        Title="Settings"
+        ContentTemplate="{DataTemplate local:Settings}"
+        Route="Settings" />
 
     <ShellContent
-   Title="Help"
-   ContentTemplate="{DataTemplate local:Help}"
-   Route="Help" />
+        Title="Help"
+        ContentTemplate="{DataTemplate local:Help}"
+        Route="Help" />
 
     <ShellContent
-    Title="About"
-    ContentTemplate="{DataTemplate local:About}"
-    Route="About" />
+        Title="About"
+        ContentTemplate="{DataTemplate local:About}"
+        Route="About" />
+
+    <ShellContent
+        Title="License"
+        ContentTemplate="{DataTemplate local:License}"
+        Route="License" />
 </Shell>

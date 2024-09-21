@@ -25,6 +25,15 @@ public partial class Settings : ContentPage
         lblErrors.Text = "";
     }
 
+    public bool ValidateVRN(string vrn) 
+    { 
+        if (Regex.Match(txtVRN.Text.ToUpper(), "^([A-Z]{1,3}\\s[A-Z]{2}\\d{2,4})$").Success || Regex.Match(txtVRN.Text.ToUpper(), "^([A-Z]{1,3}\\s\\d{2,4})$").Success)
+        {
+            return true;
+        }
+        return false;
+    }
+
     private async void Get_Creds()
     {
         try
@@ -110,7 +119,7 @@ public partial class Settings : ContentPage
                 return;
             }
 
-            if (!Regex.Match(txtVRN.Text.ToUpper(), "^([A-Z]{1,3}\\s[A-Z]{2}\\d{2,4})$").Success && !Regex.Match(txtVRN.Text.ToUpper(), "^([A-Z]{1,3}\\s\\d{2,4})$").Success)
+            if (!ValidateVRN(txtVRN.Text))
             {
                 toast = Toast.Make("VRN Formatted Incorrectly, see Help tab for more information", duration, 14);
                 await toast.Show(cancellationTokenSource.Token);
