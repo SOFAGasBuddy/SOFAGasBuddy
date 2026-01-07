@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0-ios;net8.0-android34.0</TargetFrameworks>
+		<TargetFrameworks>net9.0-ios;net9.0-android35.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
-		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net9.0-tizen</TargetFrameworks> -->
 
 		<!-- Note for MacCatalyst:
 		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.
@@ -37,14 +37,14 @@
 		<Company>CyberAustin</Company>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-android|AnyCPU'">
 	  <NoWarn>1701;1702;CS0103;ENC0046</NoWarn>
     <ApplicationDisplayVersion>$([System.DateTime]::Now.ToString('yy')).$([System.DateTime]::Now.ToString('MM'))$([System.DateTime]::Now.ToString('dd')).$([System.DateTime]::Now.ToString('HH'))</ApplicationDisplayVersion>
     <ApplicationVersion>$([System.DateTime]::Now.ToString('yyMMddHH'))</ApplicationVersion>
     <ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-ios|AnyCPU'">
 	  <NoWarn>1701;1702;CS0103;ENC0046;CA1416;SYSLIB1045</NoWarn>
     <ApplicationDisplayVersion>$([System.DateTime]::Now.ToString('yy')).$([System.DateTime]::Now.ToString('MM'))$([System.DateTime]::Now.ToString('dd')).$([System.DateTime]::Now.ToString('HH'))</ApplicationDisplayVersion>
     <ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
@@ -54,14 +54,14 @@
 	  <BuildIpa>False</BuildIpa>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-android|AnyCPU'">
 	  <NoWarn>1701;1702;CS0103;ENC0046</NoWarn>
     <ApplicationDisplayVersion>$([System.DateTime]::Now.ToString('yy')).$([System.DateTime]::Now.ToString('MM'))$([System.DateTime]::Now.ToString('dd')).$([System.DateTime]::Now.ToString('HH'))</ApplicationDisplayVersion>
     <ApplicationVersion>$([System.DateTime]::Now.ToString('yyMMddHH'))</ApplicationVersion>
     <ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-ios|AnyCPU'">
 	  <NoWarn>1701;1702;CS0103;ENC0046;CA1416;SYSLIB1045</NoWarn>
     <ApplicationDisplayVersion>$([System.DateTime]::Now.ToString('yy')).$([System.DateTime]::Now.ToString('MM'))$([System.DateTime]::Now.ToString('dd')).$([System.DateTime]::Now.ToString('HH'))</ApplicationDisplayVersion>
     <ApplicationId>com.cyberaustin.sofagasbuddy</ApplicationId>
@@ -78,21 +78,21 @@
 	  <InheritWinAppVersionFrom>None</InheritWinAppVersionFrom>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android34.0|AnyCPU'">
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-android35.0|AnyCPU'">
 	  <ApplicationTitle>SOFA Gas Buddy</ApplicationTitle>
     <ApplicationVersion>$([System.DateTime]::Now.ToString('yyMMddHH'))</ApplicationVersion>
     <ApplicationDisplayVersion>$([System.DateTime]::Now.ToString('yy')).$([System.DateTime]::Now.ToString('MM'))$([System.DateTime]::Now.ToString('dd')).$([System.DateTime]::Now.ToString('HH'))</ApplicationDisplayVersion>
     <NoWarn>1701;1702;SYSLIB1045;CA1416</NoWarn>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android34.0|AnyCPU'">
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-android35.0|AnyCPU'">
 	  <ApplicationTitle>SOFA Gas Buddy</ApplicationTitle>
     <ApplicationVersion>$([System.DateTime]::Now.ToString('yyMMddHH'))</ApplicationVersion>
     <ApplicationDisplayVersion>$([System.DateTime]::Now.ToString('yy')).$([System.DateTime]::Now.ToString('MM'))$([System.DateTime]::Now.ToString('dd')).$([System.DateTime]::Now.ToString('HH'))</ApplicationDisplayVersion>
     <NoWarn>1701;1702;SYSLIB1045;CA1416</NoWarn>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(TargetFramework)'=='net8.0-ios'">
+	<PropertyGroup Condition="'$(TargetFramework)'=='net9.0-ios'">
 	  <ProvisioningType>manual</ProvisioningType>
 	  <CodesignKey>Apple Distribution: Austin Schibler (4U3S9C797U)</CodesignKey>
 	  <CodesignProvision>AppStoreDistribute</CodesignProvision>
@@ -142,7 +142,7 @@
 	  </Compile>
 	</ItemGroup>
 	
-	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android'">
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
 		<GoogleServicesJson Include="google-services.json" />
 	</ItemGroup>
 
