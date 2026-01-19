@@ -1,4 +1,7 @@
-﻿21 Sept 2024
+﻿18 Jan 2026
+- Completely rewrote the app in Flutter. Functionally the same, but looks much better and is much faster
+
+21 Sept 2024
 - Updated license to Creative Commons non-commercial
 
 9 Sept 2024
