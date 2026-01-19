@@ -1,4 +1,4 @@
-package com.sofagasbuddy.sofa_gas_buddy
+package com.cyberaustin.sofagasbuddy
 
 import io.flutter.embedding.android.FlutterActivity
 

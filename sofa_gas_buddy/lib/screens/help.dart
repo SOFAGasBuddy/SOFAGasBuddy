@@ -37,9 +37,11 @@ class _HelpPageState extends State<HelpPage> {
       try {
         await launchUrl(mailtoUri);
       } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Unable to open email client: $e')),
-        );
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Unable to open email client: $e')),
+          );
+        }
       }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(

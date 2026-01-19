@@ -48,6 +48,22 @@ class _SettingsPageState extends State<SettingsPage> {
 
   void _saveCredentials() async {
     String idValue = _idController.text;
+    String vrnValue = _vrnController.text.toUpperCase();
+
+    if (idType == null || idType == '') {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'Please select an ID Type.',
+              selectionColor: Colors.black,),
+            backgroundColor: Colors.yellowAccent,
+            duration: Duration(seconds: 5),
+          ),
+        );
+      }
+      return;
+    }
 
     if (idType == 'S') {
       idValue = idValue.replaceAll('-', '');
@@ -59,7 +75,8 @@ class _SettingsPageState extends State<SettingsPage> {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text(
-                  'Social Security Number is invalid. Please re-enter it.'),
+                  'Social Security Number is invalid. Please re-enter it.',
+                selectionColor: Colors.black,),
               backgroundColor: Colors.yellowAccent,
               duration: Duration(seconds: 5),
             ),
@@ -68,7 +85,20 @@ class _SettingsPageState extends State<SettingsPage> {
         return;
       }
     }
-
+    if (vrnValue == '' ) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'Please enter a Vehicle Registration Number.',
+              selectionColor: Colors.black,),
+            backgroundColor: Colors.yellowAccent,
+            duration: Duration(seconds: 5),
+          ),
+        );
+      }
+      return;
+    }
     await storage.write(key: "vrn", value: _vrnController.text);
     await storage.write(key: "id", value: idValue);
     await storage.write(key: "idType", value: idType);

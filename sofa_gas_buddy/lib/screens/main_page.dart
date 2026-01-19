@@ -151,7 +151,7 @@ class _MainPageState extends State<MainPage> {
         if (line.isNotEmpty) {
           final index = line.indexOf(':');
           if (index != -1) {
-            spans.add(TextSpan(text: '${line.substring(0, index + 1)}'));
+            spans.add(TextSpan(text: line.substring(0, index + 1)));
             spans.add(TextSpan(
               text: line.substring(index + 1),
               style: boldStyle,
