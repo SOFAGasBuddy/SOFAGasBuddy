@@ -1,3 +1,9 @@
+# ============ THIS REPOSITORY IS ARCHIVED ============
+
+Please see the new repo for the Dart/Flutter based version of the app here: https://github.com/SOFAGasBuddy/sofa_gas_buddy
+
+
+
 # SOFAGasBuddy
 
 [![CodeQL](https://github.com/SOFAGasBuddy/SOFAGasBuddy/actions/workflows/codeql.yml/badge.svg)](https://github.com/SOFAGasBuddy/SOFAGasBuddy/actions/workflows/codeql.yml)
